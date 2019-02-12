@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event: MyString
+  data: 1
+  coreid: MyString
+  published_at: 2019-02-11 20:33:20
+
+two:
+  event: MyString
+  data: 1
+  coreid: MyString
+  published_at: 2019-02-11 20:33:20
