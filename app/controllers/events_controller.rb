@@ -28,7 +28,7 @@ class EventsController < ApplicationController
     if params[:key] != "SubduedStargazerZebraMultitudeUnblockRetorted"
       return render text: 'idk', status: 403
     end
-    @event = Event.new(params.extract!(:event, :data, :coreid, :published_at))
+    @event = Event.new(params.permit(:event, :data, :coreid, :published_at))
 
     respond_to do |format|
       if @event.save
