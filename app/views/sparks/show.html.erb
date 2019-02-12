@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @spark.event %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @spark.data %>
+</p>
+
+<p>
+  <strong>Coreid:</strong>
+  <%= @spark.coreid %>
+</p>
+
+<p>
+  <strong>Published at:</strong>
+  <%= @spark.published_at %>
+</p>
+
+<%= link_to 'Edit', edit_spark_path(@spark) %> |
+<%= link_to 'Back', sparks_path %>

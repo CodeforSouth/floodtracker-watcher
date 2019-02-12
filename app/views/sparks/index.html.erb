@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sparks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Data</th>
+      <th>Coreid</th>
+      <th>Published at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sparks.each do |spark| %>
+      <tr>
+        <td><%= spark.event %></td>
+        <td><%= spark.data %></td>
+        <td><%= spark.coreid %></td>
+        <td><%= spark.published_at %></td>
+        <td><%= link_to 'Show', spark %></td>
+        <td><%= link_to 'Edit', edit_spark_path(spark) %></td>
+        <td><%= link_to 'Destroy', spark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Spark', new_spark_path %>

@@ -1,0 +1,37 @@
+<%= form_with(model: spark, local: true) do |form| %>
+  <% if spark.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(spark.errors.count, "error") %> prohibited this spark from being saved:</h2>
+
+      <ul>
+      <% spark.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :event %>
+    <%= form.text_field :event %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data %>
+    <%= form.text_field :data %>
+  </div>
+
+  <div class="field">
+    <%= form.label :coreid %>
+    <%= form.text_field :coreid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :published_at %>
+    <%= form.datetime_select :published_at %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
