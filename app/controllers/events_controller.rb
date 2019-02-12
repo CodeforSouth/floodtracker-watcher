@@ -25,7 +25,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    if params[:key] != "SubduedStargazerZebraMultitudeUnblockRetorted"
+    if params[:key] != ENV['KEY']
       return render text: 'idk', status: 403
     end
     @event = Event.new(params.permit(:event, :data, :coreid, :published_at))
