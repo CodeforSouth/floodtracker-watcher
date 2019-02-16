@@ -5,7 +5,7 @@ class SparksController < ApplicationController
   # GET /sparks
   # GET /sparks.json
   def index
-    @sparks = Spark.order_by(id: :desc).all
+    @sparks = Spark.order(id: :desc).all
   end
 
   # GET /sparks/1
