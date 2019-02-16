@@ -19,7 +19,7 @@
         <td><%= event.event %></td>
         <td><%= event.data %></td>
         <td><%= event.coreid %></td>
-        <td><%= local_time event.published_at %></td>
+        <td><%= event.published_at.in_time_zone("America/New_York") %></td>
         <td><%= link_to 'Show', event %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
