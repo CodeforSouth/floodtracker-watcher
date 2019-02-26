@@ -23,12 +23,12 @@ it deploys just fine on heroku (by design)
 
 set a "KEY" environment variable so that pushed data can be authenticated
 
-![a screenshot of the "Settings" page for an app on the Heroku Dashboard; the "KEY" configuration should match the URL in particle][docs/heroku-configuration-example.png]
+![a screenshot of the "Settings" page for an app on the Heroku Dashboard; the "KEY" configuration should match the URL in particle](docs/heroku-configuration-example.png)
 
 once it's migrated and running and happy (the events & sparks URLs above should
 work), set up the appropriate URLs in the particle web console
 
-![a screenshot of a Particle Webhook Integration; the full URL is https://floodtracker-watcher.herokuapp.com/events?key=KEYKEYKEY][docs/particle-webhook-example.png]
+![a screenshot of a Particle Webhook Integration; the full URL is https://floodtracker-watcher.herokuapp.com/events?key=KEYKEYKEY](docs/particle-webhook-example.png)
 
 ## questions
 
