@@ -28,7 +28,7 @@ class SparksController < ApplicationController
     if params[:key] != ENV['KEY']
       return render text: 'idk', status: 403
     end
-    @spark = Spark.new(params.permit(:event, :data, :coreid, :published_at))  
+    @spark = Spark.new(params.permit(:event, :data, :coreid, :published_at))
 
     respond_to do |format|
       if @spark.save
@@ -38,30 +38,6 @@ class SparksController < ApplicationController
         format.html { render :new }
         format.json { render json: @spark.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /sparks/1
-  # PATCH/PUT /sparks/1.json
-  def update
-    respond_to do |format|
-      if @spark.update(spark_params)
-        format.html { redirect_to @spark, notice: 'Spark was successfully updated.' }
-        format.json { render :show, status: :ok, location: @spark }
-      else
-        format.html { render :edit }
-        format.json { render json: @spark.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /sparks/1
-  # DELETE /sparks/1.json
-  def destroy
-    @spark.destroy
-    respond_to do |format|
-      format.html { redirect_to sparks_url, notice: 'Spark was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
