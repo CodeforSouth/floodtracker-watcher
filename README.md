@@ -30,6 +30,11 @@ work), set up the appropriate URLs in the particle web console
 
 ![a screenshot of a Particle Webhook Integration; the full URL is https://floodtracker-watcher.herokuapp.com/events?key=KEYKEYKEY](docs/particle-webhook-example.png)
 
+on particle, send `level_mm` events to
+`https://floodtracker-watcher.herokuapp.com/events?key=YOUR KEY HERE`
+and `spark` events to
+`https://floodtracker-watcher.herokuapp.com/sparks?key=YOUR KEY HERE`
+
 ## questions
 
 I learned a lot and had a lot of fun with this! If you've got questions,
