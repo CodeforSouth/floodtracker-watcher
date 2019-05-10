@@ -2,5 +2,6 @@ event_name,data,coreid,published_at
 <% @sparks.each do |event| -%>
 <%= %i{event data coreid published_at}.
       map{|w| event.send(w).to_s}.
-      to_csv(row_sep: nil) %>
+      to_csv(row_sep: nil).
+      html_safe %>
 <% end -%>
