@@ -28,7 +28,8 @@ class SparksController < ApplicationController
     if params[:key] != ENV['KEY']
       return render text: 'idk', status: 403
     end
-    @spark = Spark.new(params.permit(:event, :data, :coreid, :published_at))
+    @spark = Spark.new(params.permit(:event, :data, 
+                                     :coreid, :published_at))
 
     respond_to do |format|
       if @spark.save
