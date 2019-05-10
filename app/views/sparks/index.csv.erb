@@ -1,0 +1,4 @@
+event_name,data,coreid,published_at
+<% @sparks.each do |event| -%>
+<%= event.event %>,<%= event.data %>,<%= event.coreid %>,<%= event.published_at %>
+<% end -%>
