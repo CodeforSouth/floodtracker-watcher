@@ -1,6 +1,6 @@
-date,coreid,min,avg,stddev,max
+<%= @cols.to_csv(row_sep: nil) %>
 <% @sparks.each do |event| -%>
-<%= %w{date coreid min avg stddev max}.
+<%= @cols.
       map{|w| event[w].to_s}.
       to_csv(row_sep: nil).
       html_safe %>

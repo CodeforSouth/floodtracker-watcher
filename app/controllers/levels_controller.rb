@@ -1,9 +1,12 @@
 class LevelsController < ApplicationController
   def index
+    @cols = %w{date coreid count min avg stddev max}
+
     @sparks = Spark.connection.select_all(<<-SQL)
 SELECT
         windows.date,
         s.coreid,
+        count(s.data),
         MIN(cast(s.data AS FLOAT)),
 
         AVG(cast(s.data AS FLOAT)),
