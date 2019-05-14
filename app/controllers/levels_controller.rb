@@ -26,7 +26,10 @@ WHERE
         s.event = 'floodtracker/level_mm'
 GROUP BY
       windows.date,
-      s.coreid;
+      s.coreid
+order by
+      windows.date asc,
+      s.coreid asc;
 SQL
   end
 end
