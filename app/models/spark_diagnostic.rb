@@ -1,0 +1,2 @@
+class SparkDiagnostic < ApplicationRecord
+end

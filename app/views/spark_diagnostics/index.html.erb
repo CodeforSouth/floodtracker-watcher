@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Spark Diagnostics</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Diagnostic</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @spark_diagnostics.each do |spark_diagnostic| %>
+      <tr>
+        <td><%= spark_diagnostic.diagnostic %></td>
+        <td><%= link_to 'Show', spark_diagnostic %></td>
+        <td><%= link_to 'Edit', edit_spark_diagnostic_path(spark_diagnostic) %></td>
+        <td><%= link_to 'Destroy', spark_diagnostic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Spark Diagnostic', new_spark_diagnostic_path %>

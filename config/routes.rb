@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :spark_diagnostics
   resources :sleep_plans
   resources :level_raws
   resources :batteries
