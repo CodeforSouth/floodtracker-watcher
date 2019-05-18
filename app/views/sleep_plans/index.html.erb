@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sleep Plans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Plan</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sleep_plans.each do |sleep_plan| %>
+      <tr>
+        <td><%= sleep_plan.plan %></td>
+        <td><%= link_to 'Show', sleep_plan %></td>
+        <td><%= link_to 'Edit', edit_sleep_plan_path(sleep_plan) %></td>
+        <td><%= link_to 'Destroy', sleep_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sleep Plan', new_sleep_plan_path %>

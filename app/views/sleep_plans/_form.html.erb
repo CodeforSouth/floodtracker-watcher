@@ -1,0 +1,22 @@
+<%= form_with(model: sleep_plan, local: true) do |form| %>
+  <% if sleep_plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sleep_plan.errors.count, "error") %> prohibited this sleep_plan from being saved:</h2>
+
+      <ul>
+      <% sleep_plan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :plan %>
+    <%= form.number_field :plan %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
