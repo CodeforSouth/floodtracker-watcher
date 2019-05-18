@@ -6,6 +6,8 @@
   <thead>
     <tr>
       <th>Plan</th>
+      <th>Core ID</th>
+      <th>Published at</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +16,8 @@
     <% @sleep_plans.each do |sleep_plan| %>
       <tr>
         <td><%= sleep_plan.plan %></td>
+        <td><%= sleep_plan.coreid %></td>
+        <td><%= sleep_plan.published_at.in_time_zone("America/New_York") %></td>
         <td><%= link_to 'Show', sleep_plan %></td>
         <td><%= link_to 'Edit', edit_sleep_plan_path(sleep_plan) %></td>
         <td><%= link_to 'Destroy', sleep_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -6,6 +6,8 @@
   <thead>
     <tr>
       <th>Body</th>
+      <th>Core ID</th>
+      <th>Published at</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +16,8 @@
     <% @quips.each do |quip| %>
       <tr>
         <td><%= quip.body %></td>
+        <td><%= quip.coreid %></td>
+        <td><%= quip.published_at.in_time_zone("America/New_York") %></td>
         <td><%= link_to 'Show', quip %></td>
         <td><%= link_to 'Edit', edit_quip_path(quip) %></td>
         <td><%= link_to 'Destroy', quip, method: :delete, data: { confirm: 'Are you sure?' } %></td>

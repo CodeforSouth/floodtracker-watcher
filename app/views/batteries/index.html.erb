@@ -6,6 +6,9 @@
   <thead>
     <tr>
       <th>Reading</th>
+
+      <th>Core ID</th>
+      <th>Published at</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +17,8 @@
     <% @batteries.each do |battery| %>
       <tr>
         <td><%= battery.reading %></td>
+        <td><%= battery.coreid %></td>
+        <td><%= battery.published_at.in_time_zone('America/New_York') %></td>
         <td><%= link_to 'Show', battery %></td>
         <td><%= link_to 'Edit', edit_battery_path(battery) %></td>
         <td><%= link_to 'Destroy', battery, method: :delete, data: { confirm: 'Are you sure?' } %></td>

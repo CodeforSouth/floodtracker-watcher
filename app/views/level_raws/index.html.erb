@@ -6,6 +6,9 @@
   <thead>
     <tr>
       <th>Readings</th>
+      
+      <th>Core ID</th>
+      <th>Published at</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +17,8 @@
     <% @level_raws.each do |level_raw| %>
       <tr>
         <td><%= level_raw.readings %></td>
+        <td><%= level_raw.coreid %></td>
+        <td><%= level_raw.published_at.in_time_zone("America/New_York") %></td>
         <td><%= link_to 'Show', level_raw %></td>
         <td><%= link_to 'Edit', edit_level_raw_path(level_raw) %></td>
         <td><%= link_to 'Destroy', level_raw, method: :delete, data: { confirm: 'Are you sure?' } %></td>
