@@ -1,0 +1,22 @@
+<%= form_with(model: level_raw, local: true) do |form| %>
+  <% if level_raw.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(level_raw.errors.count, "error") %> prohibited this level_raw from being saved:</h2>
+
+      <ul>
+      <% level_raw.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :readings %>
+    <%= form.text_field :readings %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

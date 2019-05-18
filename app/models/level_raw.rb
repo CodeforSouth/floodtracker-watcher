@@ -1,0 +1,2 @@
+class LevelRaw < ApplicationRecord
+end

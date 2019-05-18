@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Readings:</strong>
+  <%= @level_raw.readings %>
+</p>
+
+<%= link_to 'Edit', edit_level_raw_path(@level_raw) %> |
+<%= link_to 'Back', level_raws_path %>
