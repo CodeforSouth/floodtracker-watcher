@@ -1,6 +1,13 @@
 class Quip < ApplicationRecord
   def self.ingest(params)
-    create(
+    existing = self.
+                 where(coreid: params[:coreid]).
+                 order(published_at: :desc).
+                 first
+
+    return existing if existing.body == params[:data]
+
+    self.create(
       body: params[:data],
       coreid: params[:coreid],
       published_at: params[:published_at]
