@@ -1,0 +1,2 @@
+class Quip < ApplicationRecord
+end
