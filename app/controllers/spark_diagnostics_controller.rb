@@ -21,45 +21,45 @@ class SparkDiagnosticsController < ApplicationController
   def edit
   end
 
-  # POST /spark_diagnostics
-  # POST /spark_diagnostics.json
-  def create
-    @spark_diagnostic = SparkDiagnostic.new(spark_diagnostic_params)
+  # # POST /spark_diagnostics
+  # # POST /spark_diagnostics.json
+  # def create
+  #   @spark_diagnostic = SparkDiagnostic.new(spark_diagnostic_params)
 
-    respond_to do |format|
-      if @spark_diagnostic.save
-        format.html { redirect_to @spark_diagnostic, notice: 'Spark diagnostic was successfully created.' }
-        format.json { render :show, status: :created, location: @spark_diagnostic }
-      else
-        format.html { render :new }
-        format.json { render json: @spark_diagnostic.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @spark_diagnostic.save
+  #       format.html { redirect_to @spark_diagnostic, notice: 'Spark diagnostic was successfully created.' }
+  #       format.json { render :show, status: :created, location: @spark_diagnostic }
+  #     else
+  #       format.html { render :new }
+  #       format.json { render json: @spark_diagnostic.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
-  # PATCH/PUT /spark_diagnostics/1
-  # PATCH/PUT /spark_diagnostics/1.json
-  def update
-    respond_to do |format|
-      if @spark_diagnostic.update(spark_diagnostic_params)
-        format.html { redirect_to @spark_diagnostic, notice: 'Spark diagnostic was successfully updated.' }
-        format.json { render :show, status: :ok, location: @spark_diagnostic }
-      else
-        format.html { render :edit }
-        format.json { render json: @spark_diagnostic.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # # PATCH/PUT /spark_diagnostics/1
+  # # PATCH/PUT /spark_diagnostics/1.json
+  # def update
+  #   respond_to do |format|
+  #     if @spark_diagnostic.update(spark_diagnostic_params)
+  #       format.html { redirect_to @spark_diagnostic, notice: 'Spark diagnostic was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @spark_diagnostic }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @spark_diagnostic.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
-  # DELETE /spark_diagnostics/1
-  # DELETE /spark_diagnostics/1.json
-  def destroy
-    @spark_diagnostic.destroy
-    respond_to do |format|
-      format.html { redirect_to spark_diagnostics_url, notice: 'Spark diagnostic was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # # DELETE /spark_diagnostics/1
+  # # DELETE /spark_diagnostics/1.json
+  # def destroy
+  #   @spark_diagnostic.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to spark_diagnostics_url, notice: 'Spark diagnostic was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

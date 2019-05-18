@@ -21,45 +21,45 @@ class BatteriesController < ApplicationController
   def edit
   end
 
-  # POST /batteries
-  # POST /batteries.json
-  def create
-    @battery = Battery.new(battery_params)
+  # # POST /batteries
+  # # POST /batteries.json
+  # def create
+  #   @battery = Battery.new(battery_params)
 
-    respond_to do |format|
-      if @battery.save
-        format.html { redirect_to @battery, notice: 'Battery was successfully created.' }
-        format.json { render :show, status: :created, location: @battery }
-      else
-        format.html { render :new }
-        format.json { render json: @battery.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @battery.save
+  #       format.html { redirect_to @battery, notice: 'Battery was successfully created.' }
+  #       format.json { render :show, status: :created, location: @battery }
+  #     else
+  #       format.html { render :new }
+  #       format.json { render json: @battery.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
-  # PATCH/PUT /batteries/1
-  # PATCH/PUT /batteries/1.json
-  def update
-    respond_to do |format|
-      if @battery.update(battery_params)
-        format.html { redirect_to @battery, notice: 'Battery was successfully updated.' }
-        format.json { render :show, status: :ok, location: @battery }
-      else
-        format.html { render :edit }
-        format.json { render json: @battery.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # # PATCH/PUT /batteries/1
+  # # PATCH/PUT /batteries/1.json
+  # def update
+  #   respond_to do |format|
+  #     if @battery.update(battery_params)
+  #       format.html { redirect_to @battery, notice: 'Battery was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @battery }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @battery.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
-  # DELETE /batteries/1
-  # DELETE /batteries/1.json
-  def destroy
-    @battery.destroy
-    respond_to do |format|
-      format.html { redirect_to batteries_url, notice: 'Battery was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # # DELETE /batteries/1
+  # # DELETE /batteries/1.json
+  # def destroy
+  #   @battery.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to batteries_url, notice: 'Battery was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -21,45 +21,45 @@ class LevelRawsController < ApplicationController
   def edit
   end
 
-  # POST /level_raws
-  # POST /level_raws.json
-  def create
-    @level_raw = LevelRaw.new(level_raw_params)
+  # # POST /level_raws
+  # # POST /level_raws.json
+  # def create
+  #   @level_raw = LevelRaw.new(level_raw_params)
 
-    respond_to do |format|
-      if @level_raw.save
-        format.html { redirect_to @level_raw, notice: 'Level raw was successfully created.' }
-        format.json { render :show, status: :created, location: @level_raw }
-      else
-        format.html { render :new }
-        format.json { render json: @level_raw.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @level_raw.save
+  #       format.html { redirect_to @level_raw, notice: 'Level raw was successfully created.' }
+  #       format.json { render :show, status: :created, location: @level_raw }
+  #     else
+  #       format.html { render :new }
+  #       format.json { render json: @level_raw.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
-  # PATCH/PUT /level_raws/1
-  # PATCH/PUT /level_raws/1.json
-  def update
-    respond_to do |format|
-      if @level_raw.update(level_raw_params)
-        format.html { redirect_to @level_raw, notice: 'Level raw was successfully updated.' }
-        format.json { render :show, status: :ok, location: @level_raw }
-      else
-        format.html { render :edit }
-        format.json { render json: @level_raw.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # # PATCH/PUT /level_raws/1
+  # # PATCH/PUT /level_raws/1.json
+  # def update
+  #   respond_to do |format|
+  #     if @level_raw.update(level_raw_params)
+  #       format.html { redirect_to @level_raw, notice: 'Level raw was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @level_raw }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @level_raw.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
-  # DELETE /level_raws/1
-  # DELETE /level_raws/1.json
-  def destroy
-    @level_raw.destroy
-    respond_to do |format|
-      format.html { redirect_to level_raws_url, notice: 'Level raw was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # # DELETE /level_raws/1
+  # # DELETE /level_raws/1.json
+  # def destroy
+  #   @level_raw.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to level_raws_url, notice: 'Level raw was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
