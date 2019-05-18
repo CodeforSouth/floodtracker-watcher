@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  post '/sparks', to: 'ingest/create'
+  post '/sparks', to: 'ingest#create'
 
   resources :spark_diagnostics
   resources :sleep_plans
