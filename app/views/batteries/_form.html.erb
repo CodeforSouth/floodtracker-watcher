@@ -1,0 +1,22 @@
+<%= form_with(model: battery, local: true) do |form| %>
+  <% if battery.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(battery.errors.count, "error") %> prohibited this battery from being saved:</h2>
+
+      <ul>
+      <% battery.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :reading %>
+    <%= form.text_field :reading %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

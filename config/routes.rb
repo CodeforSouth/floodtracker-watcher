@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :batteries
   resources :quips
   resources :sparks
   resources :events

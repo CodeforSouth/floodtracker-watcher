@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Reading:</strong>
+  <%= @battery.reading %>
+</p>
+
+<%= link_to 'Edit', edit_battery_path(@battery) %> |
+<%= link_to 'Back', batteries_path %>

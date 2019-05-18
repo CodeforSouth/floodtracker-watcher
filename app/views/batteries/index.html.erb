@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Batteries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Reading</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @batteries.each do |battery| %>
+      <tr>
+        <td><%= battery.reading %></td>
+        <td><%= link_to 'Show', battery %></td>
+        <td><%= link_to 'Edit', edit_battery_path(battery) %></td>
+        <td><%= link_to 'Destroy', battery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Battery', new_battery_path %>
