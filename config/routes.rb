@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   resources :events
   resources :levels
 
-  resource :sparks
+  resources :sparks
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
