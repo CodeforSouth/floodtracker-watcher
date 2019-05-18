@@ -17,6 +17,10 @@ It "has" "UI" I guess!
 
 it's a really standard rails app
 
+### importing a backup
+
+`pg_restore -d floodtracker-watcher_development tmp/b004.pgdump`
+
 ## deploying
 
 it deploys just fine on heroku (by design)
