@@ -9,7 +9,7 @@ class Ingester
   }
 
   def self.ingest(params)
-    event_klass = params[:event]
+    event_klass = EVENT_MAPPING[params[:event]]
 
     if event_klass.nil?
       event_klass = Spark
