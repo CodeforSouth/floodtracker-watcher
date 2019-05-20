@@ -51,11 +51,11 @@ SQL
 DELETE FROM levels
     USING
         (SELECT
-                MAX(max_reading) AS final_reading,
+                MAX(last_id) AS final_reading_id,
                 coreid FROM level_histories
             GROUP BY coreid) AS groupings
         WHERE
-            levels.id <= groupings.final_reading AND
+            levels.id <= groupings.final_reading_id AND
             levels.coreid = groupings.coreid;
 SQL
   end
