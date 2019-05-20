@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2019-05-20
+  coreid: MyString
+  sleep_count: 1
+  first_publish: 
+  last_id: 1
+  min_plan: 1
+  mean_reading: 1.5
+  total_plan: 1
+  max_plan: 1
+
+two:
+  date: 2019-05-20
+  coreid: MyString
+  sleep_count: 1
+  first_publish: 
+  last_id: 1
+  min_plan: 1
+  mean_reading: 1.5
+  total_plan: 1
+  max_plan: 1

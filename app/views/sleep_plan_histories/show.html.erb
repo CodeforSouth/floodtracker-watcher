@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @sleep_plan_history.date %>
+</p>
+
+<p>
+  <strong>Coreid:</strong>
+  <%= @sleep_plan_history.coreid %>
+</p>
+
+<p>
+  <strong>Sleep count:</strong>
+  <%= @sleep_plan_history.sleep_count %>
+</p>
+
+<p>
+  <strong>First publish:</strong>
+  <%= @sleep_plan_history.first_publish %>
+</p>
+
+<p>
+  <strong>Last:</strong>
+  <%= @sleep_plan_history.last_id %>
+</p>
+
+<p>
+  <strong>Min plan:</strong>
+  <%= @sleep_plan_history.min_plan %>
+</p>
+
+<p>
+  <strong>Mean reading:</strong>
+  <%= @sleep_plan_history.mean_reading %>
+</p>
+
+<p>
+  <strong>Total plan:</strong>
+  <%= @sleep_plan_history.total_plan %>
+</p>
+
+<p>
+  <strong>Max plan:</strong>
+  <%= @sleep_plan_history.max_plan %>
+</p>
+
+<%= link_to 'Edit', edit_sleep_plan_history_path(@sleep_plan_history) %> |
+<%= link_to 'Back', sleep_plan_histories_path %>

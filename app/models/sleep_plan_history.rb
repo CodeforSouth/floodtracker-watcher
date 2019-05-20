@@ -1,0 +1,2 @@
+class SleepPlanHistory < ApplicationRecord
+end

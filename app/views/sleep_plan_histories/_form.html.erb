@@ -1,0 +1,62 @@
+<%= form_with(model: sleep_plan_history, local: true) do |form| %>
+  <% if sleep_plan_history.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sleep_plan_history.errors.count, "error") %> prohibited this sleep_plan_history from being saved:</h2>
+
+      <ul>
+      <% sleep_plan_history.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :coreid %>
+    <%= form.text_field :coreid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sleep_count %>
+    <%= form.number_field :sleep_count %>
+  </div>
+
+  <div class="field">
+    <%= form.label :first_publish %>
+    <%= form.text_field :first_publish %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_id %>
+    <%= form.number_field :last_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :min_plan %>
+    <%= form.number_field :min_plan %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mean_reading %>
+    <%= form.text_field :mean_reading %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_plan %>
+    <%= form.number_field :total_plan %>
+  </div>
+
+  <div class="field">
+    <%= form.label :max_plan %>
+    <%= form.number_field :max_plan %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

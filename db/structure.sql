@@ -240,6 +240,45 @@ CREATE TABLE public.schema_migrations (
 
 
 --
+-- Name: sleep_plan_histories; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sleep_plan_histories (
+    id bigint NOT NULL,
+    date date,
+    coreid character varying,
+    sleep_count integer,
+    first_publish timestamp with time zone,
+    last_id integer,
+    min_plan integer,
+    mean_reading double precision,
+    total_plan integer,
+    max_plan integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: sleep_plan_histories_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sleep_plan_histories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sleep_plan_histories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.sleep_plan_histories_id_seq OWNED BY public.sleep_plan_histories.id;
+
+
+--
 -- Name: sleep_plans; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -382,6 +421,13 @@ ALTER TABLE ONLY public.quips ALTER COLUMN id SET DEFAULT nextval('public.quips_
 
 
 --
+-- Name: sleep_plan_histories id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sleep_plan_histories ALTER COLUMN id SET DEFAULT nextval('public.sleep_plan_histories_id_seq'::regclass);
+
+
+--
 -- Name: sleep_plans id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -464,6 +510,14 @@ ALTER TABLE ONLY public.quips
 
 ALTER TABLE ONLY public.schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: sleep_plan_histories sleep_plan_histories_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sleep_plan_histories
+    ADD CONSTRAINT sleep_plan_histories_pkey PRIMARY KEY (id);
 
 
 --
@@ -555,6 +609,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190518181738'),
 ('20190518182446'),
 ('20190518192208'),
-('20190520015432');
+('20190520015432'),
+('20190520203626');
 
 
