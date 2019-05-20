@@ -21,46 +21,6 @@ class BatteryHistoriesController < ApplicationController
   def edit
   end
 
-  # POST /battery_histories
-  # POST /battery_histories.json
-  def create
-    @battery_history = BatteryHistory.new(battery_history_params)
-
-    respond_to do |format|
-      if @battery_history.save
-        format.html { redirect_to @battery_history, notice: 'Battery history was successfully created.' }
-        format.json { render :show, status: :created, location: @battery_history }
-      else
-        format.html { render :new }
-        format.json { render json: @battery_history.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /battery_histories/1
-  # PATCH/PUT /battery_histories/1.json
-  def update
-    respond_to do |format|
-      if @battery_history.update(battery_history_params)
-        format.html { redirect_to @battery_history, notice: 'Battery history was successfully updated.' }
-        format.json { render :show, status: :ok, location: @battery_history }
-      else
-        format.html { render :edit }
-        format.json { render json: @battery_history.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /battery_histories/1
-  # DELETE /battery_histories/1.json
-  def destroy
-    @battery_history.destroy
-    respond_to do |format|
-      format.html { redirect_to battery_histories_url, notice: 'Battery history was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_battery_history

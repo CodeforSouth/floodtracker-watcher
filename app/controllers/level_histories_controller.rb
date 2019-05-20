@@ -21,46 +21,6 @@ class LevelHistoriesController < ApplicationController
   def edit
   end
 
-  # POST /level_histories
-  # POST /level_histories.json
-  def create
-    @level_history = LevelHistory.new(level_history_params)
-
-    respond_to do |format|
-      if @level_history.save
-        format.html { redirect_to @level_history, notice: 'Level history was successfully created.' }
-        format.json { render :show, status: :created, location: @level_history }
-      else
-        format.html { render :new }
-        format.json { render json: @level_history.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /level_histories/1
-  # PATCH/PUT /level_histories/1.json
-  def update
-    respond_to do |format|
-      if @level_history.update(level_history_params)
-        format.html { redirect_to @level_history, notice: 'Level history was successfully updated.' }
-        format.json { render :show, status: :ok, location: @level_history }
-      else
-        format.html { render :edit }
-        format.json { render json: @level_history.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /level_histories/1
-  # DELETE /level_histories/1.json
-  def destroy
-    @level_history.destroy
-    respond_to do |format|
-      format.html { redirect_to level_histories_url, notice: 'Level history was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_level_history

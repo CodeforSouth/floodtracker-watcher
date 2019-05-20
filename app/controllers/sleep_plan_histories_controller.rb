@@ -21,46 +21,6 @@ class SleepPlanHistoriesController < ApplicationController
   def edit
   end
 
-  # POST /sleep_plan_histories
-  # POST /sleep_plan_histories.json
-  def create
-    @sleep_plan_history = SleepPlanHistory.new(sleep_plan_history_params)
-
-    respond_to do |format|
-      if @sleep_plan_history.save
-        format.html { redirect_to @sleep_plan_history, notice: 'Sleep plan history was successfully created.' }
-        format.json { render :show, status: :created, location: @sleep_plan_history }
-      else
-        format.html { render :new }
-        format.json { render json: @sleep_plan_history.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /sleep_plan_histories/1
-  # PATCH/PUT /sleep_plan_histories/1.json
-  def update
-    respond_to do |format|
-      if @sleep_plan_history.update(sleep_plan_history_params)
-        format.html { redirect_to @sleep_plan_history, notice: 'Sleep plan history was successfully updated.' }
-        format.json { render :show, status: :ok, location: @sleep_plan_history }
-      else
-        format.html { render :edit }
-        format.json { render json: @sleep_plan_history.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /sleep_plan_histories/1
-  # DELETE /sleep_plan_histories/1.json
-  def destroy
-    @sleep_plan_history.destroy
-    respond_to do |format|
-      format.html { redirect_to sleep_plan_histories_url, notice: 'Sleep plan history was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sleep_plan_history
