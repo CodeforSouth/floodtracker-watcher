@@ -58,6 +58,46 @@ ALTER SEQUENCE public.batteries_id_seq OWNED BY public.batteries.id;
 
 
 --
+-- Name: battery_histories; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.battery_histories (
+    id bigint NOT NULL,
+    date date,
+    coreid character varying,
+    count integer,
+    first_publish timestamp with time zone,
+    last_id integer,
+    min_reading double precision,
+    mean_reading double precision,
+    stddev_reading double precision,
+    max_reading double precision,
+    first_reading double precision,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: battery_histories_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.battery_histories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: battery_histories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.battery_histories_id_seq OWNED BY public.battery_histories.id;
+
+
+--
 -- Name: events; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -386,6 +426,13 @@ ALTER TABLE ONLY public.batteries ALTER COLUMN id SET DEFAULT nextval('public.ba
 
 
 --
+-- Name: battery_histories id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.battery_histories ALTER COLUMN id SET DEFAULT nextval('public.battery_histories_id_seq'::regclass);
+
+
+--
 -- Name: events id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -462,6 +509,14 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 ALTER TABLE ONLY public.batteries
     ADD CONSTRAINT batteries_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: battery_histories battery_histories_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.battery_histories
+    ADD CONSTRAINT battery_histories_pkey PRIMARY KEY (id);
 
 
 --
@@ -610,6 +665,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190518182446'),
 ('20190518192208'),
 ('20190520015432'),
-('20190520203626');
+('20190520203626'),
+('20190520213413');
 
 

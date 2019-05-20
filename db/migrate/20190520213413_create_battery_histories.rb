@@ -4,7 +4,7 @@ class CreateBatteryHistories < ActiveRecord::Migration[5.2]
       t.date :date
       t.string :coreid
       t.integer :count
-      t.timestamptz :first_publish
+      t.column :first_publish, :timestamptz
       t.integer :last_id
       t.float :min_reading
       t.float :mean_reading
