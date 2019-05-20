@@ -1,0 +1,2 @@
+class BatteryHistory < ApplicationRecord
+end

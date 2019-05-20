@@ -1,0 +1,2 @@
+module BatteryHistoriesHelper
+end

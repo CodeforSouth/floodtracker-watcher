@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Battery Histories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Coreid</th>
+      <th>Count</th>
+      <th>First publish</th>
+      <th>Last</th>
+      <th>Min reading</th>
+      <th>Mean reading</th>
+      <th>Stddev reading</th>
+      <th>Max reading</th>
+      <th>First reading</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @battery_histories.each do |battery_history| %>
+      <tr>
+        <td><%= battery_history.date %></td>
+        <td><%= battery_history.coreid %></td>
+        <td><%= battery_history.count %></td>
+        <td><%= battery_history.first_publish %></td>
+        <td><%= battery_history.last_id %></td>
+        <td><%= battery_history.min_reading %></td>
+        <td><%= battery_history.mean_reading %></td>
+        <td><%= battery_history.stddev_reading %></td>
+        <td><%= battery_history.max_reading %></td>
+        <td><%= battery_history.first_reading %></td>
+        <td><%= link_to 'Show', battery_history %></td>
+        <td><%= link_to 'Edit', edit_battery_history_path(battery_history) %></td>
+        <td><%= link_to 'Destroy', battery_history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Battery History', new_battery_history_path %>

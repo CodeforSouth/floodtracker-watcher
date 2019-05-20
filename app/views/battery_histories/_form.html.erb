@@ -1,0 +1,67 @@
+<%= form_with(model: battery_history, local: true) do |form| %>
+  <% if battery_history.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(battery_history.errors.count, "error") %> prohibited this battery_history from being saved:</h2>
+
+      <ul>
+      <% battery_history.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :coreid %>
+    <%= form.text_field :coreid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :count %>
+    <%= form.number_field :count %>
+  </div>
+
+  <div class="field">
+    <%= form.label :first_publish %>
+    <%= form.text_field :first_publish %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_id %>
+    <%= form.number_field :last_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :min_reading %>
+    <%= form.text_field :min_reading %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mean_reading %>
+    <%= form.text_field :mean_reading %>
+  </div>
+
+  <div class="field">
+    <%= form.label :stddev_reading %>
+    <%= form.text_field :stddev_reading %>
+  </div>
+
+  <div class="field">
+    <%= form.label :max_reading %>
+    <%= form.text_field :max_reading %>
+  </div>
+
+  <div class="field">
+    <%= form.label :first_reading %>
+    <%= form.text_field :first_reading %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

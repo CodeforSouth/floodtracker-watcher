@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @battery_history.date %>
+</p>
+
+<p>
+  <strong>Coreid:</strong>
+  <%= @battery_history.coreid %>
+</p>
+
+<p>
+  <strong>Count:</strong>
+  <%= @battery_history.count %>
+</p>
+
+<p>
+  <strong>First publish:</strong>
+  <%= @battery_history.first_publish %>
+</p>
+
+<p>
+  <strong>Last:</strong>
+  <%= @battery_history.last_id %>
+</p>
+
+<p>
+  <strong>Min reading:</strong>
+  <%= @battery_history.min_reading %>
+</p>
+
+<p>
+  <strong>Mean reading:</strong>
+  <%= @battery_history.mean_reading %>
+</p>
+
+<p>
+  <strong>Stddev reading:</strong>
+  <%= @battery_history.stddev_reading %>
+</p>
+
+<p>
+  <strong>Max reading:</strong>
+  <%= @battery_history.max_reading %>
+</p>
+
+<p>
+  <strong>First reading:</strong>
+  <%= @battery_history.first_reading %>
+</p>
+
+<%= link_to 'Edit', edit_battery_history_path(@battery_history) %> |
+<%= link_to 'Back', battery_histories_path %>

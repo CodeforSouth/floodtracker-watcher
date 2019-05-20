@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :battery_histories
   resources :sleep_plan_histories
   resources :level_histories
   post '/sparks', to: 'ingest#create'
