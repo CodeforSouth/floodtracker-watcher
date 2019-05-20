@@ -8,11 +8,16 @@ class SleepPlan < ApplicationRecord
   end
 
   def self.rollup
+    conn = self.connection
+    conn.execute(<<-SQL)
+SET TIMEZONE TO 'America/New_York';
+SQL
 
-    connection.execute(<<-SQL)
+
+    conn.execute(<<-SQL)
 INSERT INTO sleep_plan_histories
-       (date, coreid, sleep_count, first_publish, last_id, min_plan, max_plan,
-created_at, updated_at)
+       (date, coreid, sleep_count, first_publish, last_id, min_plan, total_plan,
+max_plan, created_at, updated_at)
 (SELECT
             windows.date,
             s.coreid,
@@ -28,7 +33,7 @@ created_at, updated_at)
             (SELECT DATE(generate_series(
                     (SELECT MIN(DATE(published_at)) FROM levels),
                     (SELECT MAX(DATE(published_at)) FROM levels
-                        WHERE published_at < (NOW() - '8 d'::interval)
+                        WHERE date(published_at) < date(NOW() - '8 d'::interval)
                     ),
                     '1 day')) AS date) AS windows
 
@@ -40,12 +45,12 @@ created_at, updated_at)
         windows.date asc, s.coreid asc);
 SQL
 
-    connection.execute(<<-SQL)
+    conn.execute(<<-SQL)
 DELETE FROM sleep_plans
     USING
         (SELECT
                 MAX(last_id) AS final_reading_id,
-                coreid FROM level_histories
+                coreid FROM sleep_plan_histories
             GROUP BY coreid) AS groupings
         WHERE
             sleep_plans.id <= groupings.final_reading_id AND

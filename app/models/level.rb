@@ -8,7 +8,12 @@ class Level < ApplicationRecord
   end
 
   def self.rollup
-    connection.execute(<<-SQL)
+    conn = self.connection
+    conn.execute(<<-SQL)
+SET TIMEZONE TO 'America/New_York';
+SQL
+
+    conn.execute(<<-SQL)
 INSERT INTO level_histories
 (date, coreid, "count", first_publish, last_id, min_reading, mean_reading,
 stddev_reading, max_reading, first_reading, created_at, updated_at)
@@ -30,7 +35,7 @@ FROM (
             (SELECT DATE(generate_series(
                     (SELECT MIN(DATE(published_at)) FROM levels),
                     (SELECT MAX(DATE(published_at)) FROM levels
-                        WHERE published_at < NOW() - '8 d'::interval
+                        WHERE date(published_at) < date(NOW() - '8 d'::interval)
                     ),
                     '1 day')) AS date) AS windows
 
@@ -47,7 +52,7 @@ INNER JOIN
 );
 SQL
 
-    connection.execute(<<-SQL)
+    conn.execute(<<-SQL)
 DELETE FROM levels
     USING
         (SELECT
