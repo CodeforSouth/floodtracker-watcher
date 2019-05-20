@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :level_histories
   post '/sparks', to: 'ingest#create'
 
   resources :spark_diagnostics

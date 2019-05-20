@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Level Histories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Coreid</th>
+      <th>Count</th>
+      <th>First publish</th>
+      <th>Last</th>
+      <th>Min reading</th>
+      <th>Mean reading</th>
+      <th>Stddev reading</th>
+      <th>Max reading</th>
+      <th>First reading</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @level_histories.each do |level_history| %>
+      <tr>
+        <td><%= level_history.date %></td>
+        <td><%= level_history.coreid %></td>
+        <td><%= level_history.count %></td>
+        <td><%= level_history.first_publish %></td>
+        <td><%= level_history.last_id %></td>
+        <td><%= level_history.min_reading %></td>
+        <td><%= level_history.mean_reading %></td>
+        <td><%= level_history.stddev_reading %></td>
+        <td><%= level_history.max_reading %></td>
+        <td><%= level_history.first_reading %></td>
+        <td><%= link_to 'Show', level_history %></td>
+        <td><%= link_to 'Edit', edit_level_history_path(level_history) %></td>
+        <td><%= link_to 'Destroy', level_history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Level History', new_level_history_path %>

@@ -1,0 +1,2 @@
+class LevelHistory < ApplicationRecord
+end

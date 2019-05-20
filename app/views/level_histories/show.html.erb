@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @level_history.date %>
+</p>
+
+<p>
+  <strong>Coreid:</strong>
+  <%= @level_history.coreid %>
+</p>
+
+<p>
+  <strong>Count:</strong>
+  <%= @level_history.count %>
+</p>
+
+<p>
+  <strong>First publish:</strong>
+  <%= @level_history.first_publish %>
+</p>
+
+<p>
+  <strong>Last:</strong>
+  <%= @level_history.last_id %>
+</p>
+
+<p>
+  <strong>Min reading:</strong>
+  <%= @level_history.min_reading %>
+</p>
+
+<p>
+  <strong>Mean reading:</strong>
+  <%= @level_history.mean_reading %>
+</p>
+
+<p>
+  <strong>Stddev reading:</strong>
+  <%= @level_history.stddev_reading %>
+</p>
+
+<p>
+  <strong>Max reading:</strong>
+  <%= @level_history.max_reading %>
+</p>
+
+<p>
+  <strong>First reading:</strong>
+  <%= @level_history.first_reading %>
+</p>
+
+<%= link_to 'Edit', edit_level_history_path(@level_history) %> |
+<%= link_to 'Back', level_histories_path %>

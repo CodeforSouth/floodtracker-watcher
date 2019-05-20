@@ -92,6 +92,46 @@ ALTER SEQUENCE public.events_id_seq OWNED BY public.events.id;
 
 
 --
+-- Name: level_histories; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.level_histories (
+    id bigint NOT NULL,
+    date date,
+    coreid character varying,
+    count integer,
+    first_publish timestamp with time zone,
+    last_id integer,
+    min_reading integer,
+    mean_reading double precision,
+    stddev_reading double precision,
+    max_reading integer,
+    first_reading integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: level_histories_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.level_histories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: level_histories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.level_histories_id_seq OWNED BY public.level_histories.id;
+
+
+--
 -- Name: level_raws; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -314,6 +354,13 @@ ALTER TABLE ONLY public.events ALTER COLUMN id SET DEFAULT nextval('public.event
 
 
 --
+-- Name: level_histories id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.level_histories ALTER COLUMN id SET DEFAULT nextval('public.level_histories_id_seq'::regclass);
+
+
+--
 -- Name: level_raws id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -377,6 +424,14 @@ ALTER TABLE ONLY public.batteries
 
 ALTER TABLE ONLY public.events
     ADD CONSTRAINT events_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: level_histories level_histories_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.level_histories
+    ADD CONSTRAINT level_histories_pkey PRIMARY KEY (id);
 
 
 --
@@ -499,6 +554,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190518181040'),
 ('20190518181738'),
 ('20190518182446'),
-('20190518192208');
+('20190518192208'),
+('20190520015432');
 
 
