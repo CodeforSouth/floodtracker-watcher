@@ -46,5 +46,17 @@ INNER JOIN
                 t.published_at = i.first_publish
 );
 SQL
+
+    connection.execute(<<-SQL)
+DELETE FROM levels
+    USING
+        (SELECT
+                MAX(max_reading) AS final_reading,
+                coreid FROM level_histories
+            GROUP BY coreid) AS groupings
+        WHERE
+            levels.id <= groupings.final_reading AND
+            levels.coreid = groupings.coreid;
+SQL
   end
 end
