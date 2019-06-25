@@ -19,6 +19,9 @@ it's a really standard rails app
 
 ### importing a backup
 
+data dump from 2019-06-24:
+https://i.bf1c.us/floodtracker-watcher-b006.pgdump
+
 `pg_restore -d floodtracker-watcher_development tmp/b004.pgdump`
 
 ## deploying
