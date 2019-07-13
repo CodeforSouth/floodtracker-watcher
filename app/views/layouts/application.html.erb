@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>FloodtrackerWatcher</title>
+    <link rel="stylesheet" href="https://use.typekit.net/ehe6duv.css">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,7 +11,63 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <img src="assets/headerBkgrnd.png" style="width:100%; height:110px;">
+  <div class="row justify-content-center">
+    <div class="row flood-tracker-logo justify-content-center">
+      <img src="/assets/logo.png" style="width:260px; height:34px;">
+    </div>
+  </div>
   <body>
-    <%= yield %>
+    <header>
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <%= link_to 'battery histories', battery_histories_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'sleep plan histories', sleep_plan_histories_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'level histories', level_histories_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'sparks', sparks_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'sleep plans', sleep_plans_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'level raws', level_raws_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'batteries', batteries_path, class: 'nav-link' %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to 'quips', quips_path, class: 'nav-link' %>
+        </li>
+        <li class="events">
+          <%= link_to 'events', events_path, class: 'nav-link' %>
+        </li>
+        <li class="levels">
+          <%= link_to 'levels', levels_path, class: 'nav-link' %>
+        </li>
+      </ul>
+    </header>
+    <!-- <div class="row overlay justify-content-end">
+      <div class="subscribe-button">
+        <h2>
+          Subscribe<br>to Flood Alerts<br>Near You
+        </h2>
+      </div>
+    </div> -->
+
+    <div class="container page-content">
+
+      <%= yield %>
+
+      <footer>
+        <p class="flood-tracker-footer">Brought to you by <span class="footer-link-codeformiami"><a href="http://www.codeformiami.com">Code For Miami</a></span></p>
+      </footer>
+    </div>
   </body>
 </html>
