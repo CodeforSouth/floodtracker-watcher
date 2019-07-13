@@ -98,6 +98,203 @@ ALTER SEQUENCE public.battery_histories_id_seq OWNED BY public.battery_histories
 
 
 --
+-- Name: level_histories; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.level_histories (
+    id bigint NOT NULL,
+    date date,
+    coreid character varying,
+    count integer,
+    first_publish timestamp with time zone,
+    last_id integer,
+    min_reading integer,
+    mean_reading double precision,
+    stddev_reading double precision,
+    max_reading integer,
+    first_reading integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: level_raws; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.level_raws (
+    id bigint NOT NULL,
+    readings double precision[],
+    coreid character varying,
+    published_at timestamp with time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: levels; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.levels (
+    id bigint NOT NULL,
+    reading integer,
+    coreid character varying,
+    published_at timestamp with time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: quips; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.quips (
+    id bigint NOT NULL,
+    body character varying,
+    coreid character varying,
+    published_at timestamp with time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: sleep_plan_histories; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sleep_plan_histories (
+    id bigint NOT NULL,
+    date date,
+    coreid character varying,
+    sleep_count integer,
+    first_publish timestamp with time zone,
+    last_id integer,
+    min_plan integer,
+    mean_reading double precision,
+    total_plan integer,
+    max_plan integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: sleep_plans; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sleep_plans (
+    id bigint NOT NULL,
+    plan integer,
+    coreid character varying,
+    published_at timestamp with time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: spark_diagnostics; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.spark_diagnostics (
+    id bigint NOT NULL,
+    diagnostic json,
+    coreid character varying,
+    published_at timestamp with time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: sparks; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sparks (
+    id bigint NOT NULL,
+    event character varying,
+    data character varying,
+    coreid character varying,
+    published_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: devices; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW public.devices AS
+ SELECT cores.coreid AS id,
+    min(cores.created_at) AS created_at,
+    min(cores.updated_at) AS updated_at
+   FROM ( SELECT DISTINCT batteries.coreid,
+            min(batteries.created_at) AS created_at,
+            min(batteries.updated_at) AS updated_at
+           FROM public.batteries
+          GROUP BY batteries.coreid
+        UNION
+         SELECT DISTINCT battery_histories.coreid,
+            min(battery_histories.created_at) AS created_at,
+            min(battery_histories.updated_at) AS updated_at
+           FROM public.battery_histories
+          GROUP BY battery_histories.coreid
+        UNION
+         SELECT DISTINCT levels.coreid,
+            min(levels.created_at) AS created_at,
+            min(levels.updated_at) AS updated_at
+           FROM public.levels
+          GROUP BY levels.coreid
+        UNION
+         SELECT DISTINCT level_histories.coreid,
+            min(level_histories.created_at) AS created_at,
+            min(level_histories.updated_at) AS updated_at
+           FROM public.level_histories
+          GROUP BY level_histories.coreid
+        UNION
+         SELECT DISTINCT level_raws.coreid,
+            min(level_raws.created_at) AS created_at,
+            min(level_raws.updated_at) AS updated_at
+           FROM public.level_raws
+          GROUP BY level_raws.coreid
+        UNION
+         SELECT DISTINCT quips.coreid,
+            min(quips.created_at) AS created_at,
+            min(quips.updated_at) AS updated_at
+           FROM public.quips
+          GROUP BY quips.coreid
+        UNION
+         SELECT DISTINCT sleep_plans.coreid,
+            min(sleep_plans.created_at) AS created_at,
+            min(sleep_plans.updated_at) AS updated_at
+           FROM public.sleep_plans
+          GROUP BY sleep_plans.coreid
+        UNION
+         SELECT DISTINCT sleep_plan_histories.coreid,
+            min(sleep_plan_histories.created_at) AS created_at,
+            min(sleep_plan_histories.updated_at) AS updated_at
+           FROM public.sleep_plan_histories
+          GROUP BY sleep_plan_histories.coreid
+        UNION
+         SELECT DISTINCT sparks.coreid,
+            min(sparks.created_at) AS created_at,
+            min(sparks.updated_at) AS updated_at
+           FROM public.sparks
+          GROUP BY sparks.coreid
+        UNION
+         SELECT DISTINCT spark_diagnostics.coreid,
+            min(spark_diagnostics.created_at) AS created_at,
+            min(spark_diagnostics.updated_at) AS updated_at
+           FROM public.spark_diagnostics
+          GROUP BY spark_diagnostics.coreid) cores
+  GROUP BY cores.coreid
+  ORDER BY cores.coreid;
+
+
+--
 -- Name: events; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -132,27 +329,6 @@ ALTER SEQUENCE public.events_id_seq OWNED BY public.events.id;
 
 
 --
--- Name: level_histories; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.level_histories (
-    id bigint NOT NULL,
-    date date,
-    coreid character varying,
-    count integer,
-    first_publish timestamp with time zone,
-    last_id integer,
-    min_reading integer,
-    mean_reading double precision,
-    stddev_reading double precision,
-    max_reading integer,
-    first_reading integer,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
 -- Name: level_histories_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -169,20 +345,6 @@ CREATE SEQUENCE public.level_histories_id_seq
 --
 
 ALTER SEQUENCE public.level_histories_id_seq OWNED BY public.level_histories.id;
-
-
---
--- Name: level_raws; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.level_raws (
-    id bigint NOT NULL,
-    readings double precision[],
-    coreid character varying,
-    published_at timestamp with time zone,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
 
 
 --
@@ -205,20 +367,6 @@ ALTER SEQUENCE public.level_raws_id_seq OWNED BY public.level_raws.id;
 
 
 --
--- Name: levels; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.levels (
-    id bigint NOT NULL,
-    reading integer,
-    coreid character varying,
-    published_at timestamp with time zone,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
 -- Name: levels_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -235,20 +383,6 @@ CREATE SEQUENCE public.levels_id_seq
 --
 
 ALTER SEQUENCE public.levels_id_seq OWNED BY public.levels.id;
-
-
---
--- Name: quips; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.quips (
-    id bigint NOT NULL,
-    body character varying,
-    coreid character varying,
-    published_at timestamp with time zone,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
 
 
 --
@@ -280,26 +414,6 @@ CREATE TABLE public.schema_migrations (
 
 
 --
--- Name: sleep_plan_histories; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sleep_plan_histories (
-    id bigint NOT NULL,
-    date date,
-    coreid character varying,
-    sleep_count integer,
-    first_publish timestamp with time zone,
-    last_id integer,
-    min_plan integer,
-    mean_reading double precision,
-    total_plan integer,
-    max_plan integer,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
 -- Name: sleep_plan_histories_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -316,20 +430,6 @@ CREATE SEQUENCE public.sleep_plan_histories_id_seq
 --
 
 ALTER SEQUENCE public.sleep_plan_histories_id_seq OWNED BY public.sleep_plan_histories.id;
-
-
---
--- Name: sleep_plans; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sleep_plans (
-    id bigint NOT NULL,
-    plan integer,
-    coreid character varying,
-    published_at timestamp with time zone,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
 
 
 --
@@ -352,20 +452,6 @@ ALTER SEQUENCE public.sleep_plans_id_seq OWNED BY public.sleep_plans.id;
 
 
 --
--- Name: spark_diagnostics; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.spark_diagnostics (
-    id bigint NOT NULL,
-    diagnostic json,
-    coreid character varying,
-    published_at timestamp with time zone,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
 -- Name: spark_diagnostics_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -382,21 +468,6 @@ CREATE SEQUENCE public.spark_diagnostics_id_seq
 --
 
 ALTER SEQUENCE public.spark_diagnostics_id_seq OWNED BY public.spark_diagnostics.id;
-
-
---
--- Name: sparks; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sparks (
-    id bigint NOT NULL,
-    event character varying,
-    data character varying,
-    coreid character varying,
-    published_at timestamp without time zone,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
 
 
 --
@@ -666,6 +737,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190518192208'),
 ('20190520015432'),
 ('20190520203626'),
-('20190520213413');
+('20190520213413'),
+('20190624234204');
 
 
