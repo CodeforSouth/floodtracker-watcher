@@ -5,7 +5,7 @@ class Quip < ApplicationRecord
                  order(published_at: :desc).
                  first
 
-    return existing if existing.body == params[:data]
+    return existing if existing && (existing.body == params[:data])
 
     self.create(
       body: params[:data],
