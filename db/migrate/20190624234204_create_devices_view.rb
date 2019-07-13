@@ -22,7 +22,7 @@ CREATE OR REPLACE VIEW devices
 AS
 (
         SELECT
-        coreid,
+        coreid AS id,
         MIN(created_at) AS created_at,
         MIN(updated_at) AS updated_at
 FROM (
