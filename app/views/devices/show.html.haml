@@ -1,0 +1,47 @@
+%p#notice= notice
+%h1
+  Device #{@device.id}
+%h2 battery
+%table
+  %thead
+    %tr
+      %th date
+      %th percent
+  %tbody
+    - @device.batteries.order(created_at: :desc).limit(5).each do |b|
+      %tr
+        %td= b.published_at
+        %td= b.reading
+
+%p
+  more detail on
+  = link_to 'recent battery readings'
+  or
+  = link_to 'battery history'
+
+%h2 levels
+%table
+  %thead
+    %tr
+      %th date
+      %th reading
+  %tbody
+    - @device.levels.order(created_at: :desc).limit(5).each do |l|
+      %tr
+        %td= l.published_at
+        %td= l.reading
+
+%h2 quips
+%table
+  %thead
+    %tr
+      %th quip
+      %th first seen
+  %tbody
+    - @device.quips.order(created_at: :desc).each do |q|
+      %tr
+        %td= q.body
+        %td= q.created_at
+= link_to 'Edit', edit_device_path(@device)
+|
+= link_to 'Back', devices_path
