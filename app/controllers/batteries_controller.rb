@@ -4,7 +4,13 @@ class BatteriesController < ApplicationController
   # GET /batteries
   # GET /batteries.json
   def index
-    @batteries = Battery.all
+    batt_relation = Battery
+
+    if @device_id = params["device_id"]
+      batt_relation = batt_relation.where(coreid: @device_id)
+    end
+
+    @batteries = batt_relation.all
   end
 
   # GET /batteries/1

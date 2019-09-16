@@ -1,6 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Batteries</h1>
+<h1>
+  Batteries
+  <% if @device_id %>
+  for
+  <%= link_to @device_id, device_path(@device_id) %>
+  <% end %>
+</h1>
+
+<% if @device_id %>
+<p>
+  <%= link_to device_path(@device_id) do %>
+  Back to device
+  <%= @device_id %>
+  <% end %>
+</p>
+<% end %>
 
 <table>
   <thead>
