@@ -4,7 +4,13 @@ class BatteryHistoriesController < ApplicationController
   # GET /battery_histories
   # GET /battery_histories.json
   def index
-    @battery_histories = BatteryHistory.all
+    hist_relation = BatteryHistory
+
+    if @device_id = params["device_id"]
+      hist_relation = hist_relation.where(coreid: @device_id)
+    end
+
+    @battery_histories = hist_relation.all
   end
 
   # GET /battery_histories/1

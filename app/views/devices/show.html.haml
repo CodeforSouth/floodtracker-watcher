@@ -17,7 +17,7 @@
   more detail on
   = link_to 'recent battery readings', device_batteries_path(@device)
   or
-  = link_to 'battery history'
+  = link_to 'battery history', device_battery_histories_path(@device)
 
 %h2 levels
 %table
@@ -42,6 +42,3 @@
       %tr
         %td= q.body
         %td= q.created_at
-= link_to 'Edit', edit_device_path(@device)
-|
-= link_to 'Back', devices_path

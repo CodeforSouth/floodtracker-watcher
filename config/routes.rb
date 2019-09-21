@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :devices do
     resources :batteries
+    resources :battery_histories
   end
   resources :battery_histories
   resources :sleep_plan_histories
