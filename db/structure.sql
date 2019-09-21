@@ -490,6 +490,56 @@ ALTER SEQUENCE public.sparks_id_seq OWNED BY public.sparks.id;
 
 
 --
+-- Name: synthetic_battery_histories; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW public.synthetic_battery_histories AS
+ SELECT battery_histories.date,
+    battery_histories.coreid,
+    battery_histories.count,
+    battery_histories.first_publish,
+    battery_histories.last_id,
+    battery_histories.min_reading,
+    battery_histories.mean_reading,
+    battery_histories.stddev_reading,
+    battery_histories.max_reading,
+    battery_histories.first_reading,
+    battery_histories.created_at,
+    battery_histories.updated_at
+   FROM public.battery_histories
+UNION
+ SELECT i.date,
+    i.coreid,
+    i.count,
+    i.first_publish,
+    i.last_id,
+    i.min_reading,
+    i.mean_reading,
+    i.stddev_reading,
+    i.max_reading,
+    t.reading AS first_reading,
+    now() AS created_at,
+    now() AS updated_at
+   FROM (( SELECT windows.date,
+            s.coreid,
+            count(s.reading) AS count,
+            min(s.published_at) AS first_publish,
+            max(s.id) AS last_id,
+            min(s.reading) AS min_reading,
+            avg(s.reading) AS mean_reading,
+            stddev(s.reading) AS stddev_reading,
+            max(s.reading) AS max_reading
+           FROM (( SELECT date(generate_series((( SELECT min(date(batteries.published_at)) AS min
+                           FROM public.batteries))::timestamp with time zone, (( SELECT max(date(batteries.published_at)) AS max
+                           FROM public.batteries
+                          WHERE (date(batteries.published_at) < date((now() - '8 days'::interval)))))::timestamp with time zone, '1 day'::interval)) AS date) windows
+             JOIN public.batteries s ON ((date(s.published_at) = windows.date)))
+          GROUP BY windows.date, s.coreid
+          ORDER BY windows.date, s.coreid) i
+     JOIN public.batteries t ON ((((t.coreid)::text = (i.coreid)::text) AND (t.published_at = i.first_publish))));
+
+
+--
 -- Name: batteries id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -738,6 +788,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190520015432'),
 ('20190520203626'),
 ('20190520213413'),
-('20190624234204');
+('20190624234204'),
+('20190921162920');
 
 
