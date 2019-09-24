@@ -26,7 +26,9 @@ https://i.bf1c.us/floodtracker-watcher-b006.pgdump
 
 ## deploying
 
-it deploys just fine on heroku (by design)
+it deploys mostly fine on heroku (by design)
+
+
 
 set a "KEY" environment variable so that pushed data can be authenticated
 
