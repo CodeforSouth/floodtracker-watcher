@@ -1,5 +1,9 @@
 {
-  "name": "floodtracker-watcher",
-  "private": true,
-  "dependencies": {}
+    "name": "floodtracker-watcher",
+    "private": true,
+    "dependencies": {},
+    "engines": {
+        "node": "^6.9",
+        "yarn": "^0.21"
+    }
 }
