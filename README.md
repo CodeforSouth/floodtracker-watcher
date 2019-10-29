@@ -1,17 +1,18 @@
 # floodtracker-watcher
 
-This is a quick little app to store results from the Code for Miami
-IoT Flood Tracker. This project uses the Particle microcontroller & cell
-system to get data from deployed sensors, and puts it in a database. Don't
-think of it as a destination, but as part of the journey.
+Flood Tracker is a Code for Miami project seeking to address the problem of flooding in South Florida. Many areas of Miami flood because of "King Tide" and climate change. This is a work in progress app seeking to address helping people interested in tracking flooding do that. 
 
-I've found it really helpful while debugging sensor behavior.
+This projects uses the Particle microcontroller & cell system to get data from deployed sensors and puts it in a database. Think of it as a work in progress.
+
+Bryce, the lead developer has found it really helpful while debugging sensor behavior.
 
 It shows events: https://floodtracker-watcher.herokuapp.com/events
 
 It shows other status updates: https://floodtracker-watcher.herokuapp.com/sparks
 
-It "has" "UI" I guess!
+It "has" "User Interface" but if you are a designer we could use help in making it better.
+
+Learn how we built this here: https://medium.com/code-for-miami/building-iot-flood-trackers-for-miami-with-miami-7186a8c7200e
 
 ## developing
 
@@ -27,8 +28,6 @@ https://i.bf1c.us/floodtracker-watcher-b006.pgdump
 ## deploying
 
 it deploys mostly fine on heroku (by design)
-
-
 
 set a "KEY" environment variable so that pushed data can be authenticated
 
@@ -48,6 +47,11 @@ and `spark` events to
 
 I learned a lot and had a lot of fun with this! If you've got questions,
 email me at bkerley@brycekerley.net .
+
+## get involved
+
+* We suggest you fork this and get it running on your local.
+* We need help with UX Design and Research.
 
 ## license
 
